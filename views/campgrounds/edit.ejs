@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Edit Campground</h1>
+    <!-- update的时候，根据什么update的？应该是id？id哪里来的？ -->
+    <!-- <form action="/campgrounds/<%=campground._id%>" method="PUT"> -->
+    <!--todo 这是什么操作？？？？method不写在method里，反而写在url里？-->
+    <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST">
+        <!-- 这么写的原因，包括为什么直接method写put打不过去请求，是因为form只能发送get或者post的request，所以要模拟一个put或者delete或者其他的
+        所以是先用到了method overide的包 -->
+        <div>
+            <label for='title'>Title</label>
+            <input type="text" id='title' name="campground[title]" value="<%=campground.title%>">
+        </div>
+        <div>
+            <label for='location'>Location</label>
+            <input type="text" id='location' name="campground[location]" value="<%=campground.location%>">
+            <!-- placeholder只能是最初的灰色的背景，不能直接在上面改，能改的是value -->
+        </div>
+        <button type="submit">Update Campground</button>
+    </form>
+    <a href="/campgrounds/<%= campground._id%>">Back To Campground</a>
+</body>
+
+</html>

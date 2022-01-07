@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        <%=campground.title %>
+    </h1>
+    <h2>
+        <%=campground.location %>
+    </h2>
+    <p>
+        <a href="/campgrounds/<%= campground._id%>/edit">edit</a>
+    </p>
+    <p>
+        <!-- todo    他们两个谁在里谁在外？ 如何写一个delete的连接？如何知道的怎么写？-->
+        <!-- 看了答案，不是连接啊这里，这里相当于一个要提交的表格，连接只是跳转，这里虽然没有提交内容，但是是访问的别的method的页面？ -->
+    <form action="/campgrounds/<%= campground._id%>?_method=Delete" method="POST">
+        <button type="submit">Delete</button>
+    </form>
+
+    </p>
+    <footer>
+        <a href="/campgrounds">All Campgrounds</a>
+    </footer>
+
+</body>
+
+</html>
