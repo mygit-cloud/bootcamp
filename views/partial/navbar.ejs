@@ -1,0 +1,18 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <!-- 还可以有sticky-top的属性，就是滚动往下的时候，navbar一直在开头 -->
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">YelpCamp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse  navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">Home</a>
+                <!-- 这块看文档也没看懂， aria-current是什么意思？-->
+                <a class="nav-link" href="/campgrounds">Campgrounds</a>
+                <a class="nav-link" href="/campgrounds/new">New Campground</a>
+            </div>
+        </div>
+    </div>
+</nav>

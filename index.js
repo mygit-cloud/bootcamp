@@ -2,6 +2,7 @@ const express = require('express')
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const path = require('path');
+const ejsMate = require('ejs-mate');
 const Campground = require('./models/campground'); //引用的语法是这样的，要用哪个文件，把它引用进来
 
 
@@ -19,6 +20,9 @@ db.once("open", () => {
     console.log("Database connected");
 });
 
+//todo 加入打日志的中间件！！！
+
+app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 //原本在哪个路径下运行，就会去那个路径的view里面找，但这个让找的路径固定到当前文件路径+views下
@@ -49,6 +53,7 @@ app.post('/campgrounds', async (req, res) => {
     res.redirect(`/campgrounds/${campground._id}`);
     //???下划线是什么意思,如何知道是get？
 })
+//todo 有的图片显示不出来，似乎是格式的问题
 
 app.get('/campgrounds/:id', async (req, res) => {
     const campground = await Campground.findById(req.params.id);
@@ -82,6 +87,6 @@ app.delete('/campgrounds/:id', async (req, res) => {
 
 
 
-app.listen(3000, () => {
-    console.log(`Serving listening at http://localhost:3000`)
+app.listen(8080, () => {
+    console.log(`Serving listening at http://localhost:8080`)
 })

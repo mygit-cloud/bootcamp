@@ -18,13 +18,15 @@ db.once("open", () => {
 //简单函数可以用这种方式来写
 const getRandomItem = (array) => array[Math.floor(Math.random() * array.length)];
 
-
 const seedDB = async () => {
     await Campground.deleteMany({}); //只有await了才删除，但是是为什么呢？如果没有的话，不也是启动了吗？
     for (let i = 0; i < 50; i++) {
         const newCamp = new Campground({
             title: `${getRandomItem(descriptors)} ${getRandomItem(places)}`,
-            location: `${getRandomItem(cities)["city"]}, ${getRandomItem(cities)["state"]}`
+            location: `${getRandomItem(cities)["city"]}, ${getRandomItem(cities)["state"]}`,
+            image: 'https://source.unsplash.com/collection/483251',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam dolores vero perferendis laudantium, consequuntur voluptatibus nulla architecto, sit soluta esse iure sed labore ipsam a cum nihil atque molestiae deserunt!',
+            price: Math.floor(Math.random() * 1000)
         });
         await newCamp.save();
     }
